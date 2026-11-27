@@ -26,7 +26,7 @@ export const PROFILE = {
     en: "Osh State University · Software Engineering (BSc): web and mobile development",
   } as L,
   educationYears: "2022 — 2027",
-  photo: "/images/mirlan.jpg",
+  photo: "/images/mirlan-mountains.jpg",
 };
 
 export const UI = {
@@ -88,6 +88,8 @@ export const UI = {
   contactKicker: { ky: "// байланыш", ru: "// контакты", en: "// contact" },
   contactTitleA: { ky: "Бирге бир нерсе", ru: "Давайте построим", en: "Let's build" },
   contactTitleB: { ky: "курайлы.", ru: "что-нибудь вместе.", en: "something together." },
+  themeLight: { ky: "Жарык темага өтүү", ru: "Светлая тема", en: "Switch to light theme" },
+  themeDark: { ky: "Караңгы темага өтүү", ru: "Тёмная тема", en: "Switch to dark theme" },
   footerMade: { ky: "Next.js менен жасалды · Vercel", ru: "Сделано на Next.js · Vercel", en: "Built with Next.js · Vercel" },
 } satisfies Record<string, unknown>;
 

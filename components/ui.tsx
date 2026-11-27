@@ -13,9 +13,9 @@ type BtnProps = { href: string; children: ReactNode; variant?: "accent" | "light
 export function Btn({ href, children, variant = "ghost", external, className = "" }: BtnProps) {
   const base = "inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-[15px] font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
   const v = {
-    accent: "bg-accent text-ink font-bold hover:bg-[#ff9470]",
-    light: "bg-zinc-100 text-ink font-bold hover:bg-white",
-    ghost: "border border-zinc-700 text-zinc-100 hover:border-zinc-400 hover:bg-white/5",
+    accent: "bg-accent text-ink font-bold hover:brightness-110",
+    light: "bg-zinc-100 text-ink font-bold hover:opacity-90",
+    ghost: "border border-zinc-700 text-zinc-100 hover:border-zinc-400 hover-tint",
   }[variant];
   return (
     <a href={href} className={`${base} ${v} ${className}`} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>

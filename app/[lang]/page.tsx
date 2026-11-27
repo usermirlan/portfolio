@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ARCHIVE, LANGS, MARQUEE, MORE, PROFILE, PROJECTS, STACK, UI, isLang, type Lang } from "@/lib/content";
 import { Btn, Chip, GithubIcon } from "@/components/ui";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -31,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             ))}
           </div>
           <div className="flex items-center gap-3">
+            <ThemeToggle labels={{ light: t(UI.themeLight), dark: t(UI.themeDark) }} />
             <div role="group" aria-label="Language" className="flex gap-0.5 rounded-full border border-line2 p-[3px] font-mono">
               {LANGS.map((l) => (
                 <a
@@ -83,11 +85,11 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             {/* fanned screenshots */}
             <div aria-hidden="true" className="rise relative mt-6 h-[200px] sm:h-[300px] lg:h-[380px]" style={{ animationDelay: "260ms" }}>
               <Image src="/images/ezapis-dark.jpg" alt="" width={1440} height={900} priority sizes="46vw"
-                className="absolute top-[60px] left-[2%] w-[46%] -rotate-4 rounded-t-2xl border border-zinc-700 shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
+                className="absolute top-[60px] left-[2%] w-[46%] -rotate-4 rounded-t-2xl border border-zinc-700 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
               <Image src="/images/toi-hero.jpg" alt="" width={1440} height={900} priority sizes="46vw"
-                className="absolute top-[60px] right-[2%] w-[46%] rotate-4 rounded-t-2xl border border-zinc-700 shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
+                className="absolute top-[60px] right-[2%] w-[46%] rotate-4 rounded-t-2xl border border-zinc-700 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
               <Image src="/images/tooarna-home.jpg" alt="" width={800} height={505} priority sizes="50vw"
-                className="absolute top-0 left-1/4 w-1/2 rounded-t-2xl border border-zinc-600 shadow-[0_30px_80px_rgba(0,0,0,0.7)]" />
+                className="absolute top-0 left-1/4 w-1/2 rounded-t-2xl border border-zinc-600 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.7)]" />
             </div>
           </div>
         </section>
@@ -128,14 +130,14 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <article key={p.id} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
                 <div className={`flex flex-col gap-5 lg:col-span-5 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
                   <div className="flex items-center gap-3.5 font-mono text-[13px] text-zinc-400">
-                    <span className="font-bold" style={{ color: p.accent }}>{p.n}</span>
+                    <span className="font-bold acc" style={{ "--a": p.accent } as React.CSSProperties}>{p.n}</span>
                     <span className="h-px flex-1 bg-line2" />
                     <span>{t(p.kind)}</span>
                   </div>
                   <h3 className="text-[44px] leading-none font-bold tracking-[-0.035em] md:text-[52px]">{p.name}</h3>
                   <p className="text-lg leading-normal text-zinc-300 md:text-xl">{t(p.tagline)}</p>
                   <div className="flex flex-col gap-1.5 rounded-2xl border border-line bg-panel px-5 py-4">
-                    <span className="font-mono text-xs font-bold" style={{ color: p.accent }}>{t(UI.hard)}</span>
+                    <span className="font-mono text-xs font-bold acc" style={{ "--a": p.accent } as React.CSSProperties}>{t(UI.hard)}</span>
                     <span className="text-base leading-relaxed text-zinc-400">{t(p.hard)}</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -147,7 +149,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   </div>
                 </div>
 
-                <div className={`overflow-hidden rounded-[18px] border border-line2 bg-panel shadow-[0_40px_100px_rgba(0,0,0,0.55)] lg:col-span-7 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
+                <div className={`overflow-hidden rounded-[18px] border border-line2 bg-panel shadow-soft shadow-[0_40px_100px_rgba(0,0,0,0.55)] lg:col-span-7 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
                   <div className="flex items-center gap-2 border-b border-line px-4 py-3">
                     <span className="h-[11px] w-[11px] rounded-full bg-zinc-700" />
                     <span className="h-[11px] w-[11px] rounded-full bg-zinc-700" />
@@ -176,7 +178,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             {MORE.map((m) => (
               <a key={m.n} href={m.repo ?? m.live} target="_blank" rel="noopener noreferrer"
                 className="group flex flex-col gap-3.5 rounded-[20px] border border-line2 p-7 transition-colors hover:border-zinc-500 hover:bg-panel md:p-8">
-                <span className="font-mono text-xs font-bold" style={{ color: m.color }}>{m.n} · {t(m.label)}</span>
+                <span className="font-mono text-xs font-bold acc" style={{ "--a": m.color } as React.CSSProperties}>{m.n} · {t(m.label)}</span>
                 <span className="flex items-start justify-between gap-4 text-[28px] font-bold tracking-[-0.02em]">
                   {t(m.name)}
                   <span className="text-zinc-500 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white">↗</span>
@@ -199,7 +201,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STACK.map((g) => (
               <div key={g.title} className="flex flex-col gap-4 rounded-[18px] border border-line2 p-7">
-                <span className="font-mono text-[13px] font-bold" style={{ color: g.color }}>{g.title}</span>
+                <span className="font-mono text-[13px] font-bold acc" style={{ "--a": g.color } as React.CSSProperties}>{g.title}</span>
                 <ul className="flex flex-col gap-1 text-lg leading-relaxed text-zinc-300 md:text-[19px]">
                   {g.items.map((it) => <li key={it}>{it}</li>)}
                 </ul>
