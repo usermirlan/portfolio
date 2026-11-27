@@ -18,20 +18,21 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* NAV */}
-      <header className="sticky top-0 z-30 border-b border-line bg-ink/80 backdrop-blur-md">
-        <nav className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-4 px-5 md:px-8">
-          <a href={`/${lang}`} className="font-mono text-base font-bold">
-            мирлан<span className="text-accent">.dev</span>
+      {/* NAV: floating glass bar */}
+      <header id="top" className="sticky top-3 z-40 px-3 md:top-4 md:px-6">
+        <nav className="nav-glass mx-auto flex max-w-[1200px] items-center justify-between gap-3 rounded-2xl px-2.5 py-2 md:px-3">
+          <a href={`/${lang}`} className="flex items-center gap-2.5 rounded-xl py-1 pr-2 pl-1 font-mono text-[15px] font-bold">
+            <span className="logo-badge flex h-9 w-9 items-center justify-center rounded-xl font-sans text-base font-extrabold text-white">М</span>
+            <span className="hidden sm:inline">мирлан<span className="text-accent">.dev</span></span>
           </a>
-          <div className="hidden items-center gap-1 text-[15px] font-medium text-zinc-300 md:flex">
+          <div className="hidden items-center gap-0.5 text-[15px] font-medium text-zinc-300 lg:flex">
             {(["work", "stack", "about", "contact"] as const).map((k) => (
-              <a key={k} href={`#${k}`} className="rounded-lg px-3.5 py-2.5 transition-colors hover:text-white">
+              <a key={k} href={`#${k}`} className="nav-link rounded-xl px-4 py-2.5 transition-colors hover:text-zinc-100">
                 {t(UI.nav[k])}
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <ThemeToggle labels={{ light: t(UI.themeLight), dark: t(UI.themeDark) }} />
             <div role="group" aria-label="Language" className="flex gap-0.5 rounded-full border border-line2 p-[3px] font-mono">
               {LANGS.map((l) => (
@@ -40,26 +41,28 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   href={`/${l}`}
                   hrefLang={l}
                   aria-current={l === lang ? "true" : undefined}
-                  className={`rounded-full px-2.5 py-1.5 text-xs uppercase transition-colors ${l === lang ? "bg-zinc-100 font-bold text-ink" : "text-zinc-400 hover:text-white"}`}
+                  className={`rounded-full px-2.5 py-1.5 text-xs uppercase transition-colors ${l === lang ? "bg-zinc-100 font-bold text-ink" : "text-zinc-400 hover:text-zinc-100"}`}
                 >
                   {l}
                 </a>
               ))}
             </div>
-            {PROFILE.resume && (
-              <a href={PROFILE.resume} className="hidden rounded-xl border border-zinc-700 px-4 py-2.5 text-sm font-semibold hover:border-zinc-400 sm:inline-block" download>
-                {t(UI.nav.resume)} ↓
-              </a>
-            )}
+            <a href="#contact" className="cta-glow hidden items-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-sm font-bold text-ink transition hover:brightness-110 sm:inline-flex">
+              {t(UI.hire)}
+              <span aria-hidden="true">→</span>
+            </a>
           </div>
         </nav>
       </header>
 
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden border-b border-line">
-          <div aria-hidden="true" className="hero-glow pointer-events-none absolute inset-0" />
+        <section className="relative -mt-[76px] overflow-hidden border-b border-line pt-[76px]">
+          <div aria-hidden="true" className="aurora pointer-events-none absolute inset-0">
+            <span className="a1" /><span className="a2" /><span className="a3" />
+          </div>
           <div aria-hidden="true" className="grid-lines pointer-events-none absolute inset-0" />
+          <div aria-hidden="true" className="hero-fade pointer-events-none absolute inset-x-0 bottom-0 h-40" />
           <div className="relative mx-auto flex max-w-[1280px] flex-col gap-8 px-5 pt-16 md:gap-9 md:px-8 md:pt-24">
             <span className="rise flex items-center gap-2.5 self-start rounded-full border border-line2 bg-panel px-3.5 py-2 font-mono text-[13px] text-zinc-300">
               <span className="pulse h-2 w-2 rounded-full bg-green-400" />
@@ -68,7 +71,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <h1 className="rise max-w-[1100px] text-[56px] leading-[0.92] font-extrabold tracking-[-0.05em] sm:text-[88px] lg:text-[128px]" style={{ animationDelay: "80ms" }}>
               {t(UI.heroA)}
               <br />
-              <span className="text-zinc-500">{t(UI.heroB)}</span>
+              <span className="text-grad">{t(UI.heroB)}</span>
               {t(UI.heroC)}
               <span className="text-accent">.</span>
             </h1>
@@ -267,9 +270,53 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </section>
       </main>
 
-      <footer className="mx-auto flex max-w-[1280px] flex-wrap justify-between gap-4 px-5 py-12 font-mono text-[13px] text-zinc-400 md:px-8">
-        <span>© 2026 {t(PROFILE.name)}</span>
-        <span>{t(UI.footerMade)}</span>
+      <footer className="site-footer relative mt-32 overflow-hidden">
+        <div aria-hidden="true" className="footer-glow pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-[1280px] px-5 pt-20 md:px-8">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+            <div className="flex flex-col gap-5">
+              <a href={`/${lang}`} className="flex items-center gap-3 font-mono text-lg font-bold">
+                <span className="logo-badge flex h-11 w-11 items-center justify-center rounded-xl font-sans text-lg font-extrabold text-white">М</span>
+                мирлан<span className="-ml-3 text-accent">.dev</span>
+              </a>
+              <p className="max-w-[320px] text-[15px] leading-relaxed text-zinc-400">{t(UI.footerBlurb)}</p>
+              <span className="flex items-center gap-2.5 self-start rounded-full border border-line2 bg-panel px-3.5 py-2 font-mono text-xs text-zinc-300">
+                <span className="pulse h-2 w-2 rounded-full bg-green-400" />
+                {t(UI.status)}
+              </span>
+            </div>
+            <div className="flex flex-col gap-3.5 text-[15px]">
+              <span className="font-mono text-xs font-bold tracking-[0.14em] text-zinc-500 uppercase">{t(UI.footNav)}</span>
+              {(["work", "stack", "about", "contact"] as const).map((k) => (
+                <a key={k} href={`#${k}`} className="foot-link text-zinc-300 hover:text-zinc-100">{t(UI.nav[k])}</a>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3.5 text-[15px]">
+              <span className="font-mono text-xs font-bold tracking-[0.14em] text-zinc-500 uppercase">{t(UI.footProjects)}</span>
+              {PROJECTS.map((p) => (
+                <a key={p.id} href={p.live ?? p.repo} target="_blank" rel="noopener noreferrer" className="foot-link text-zinc-300 hover:text-zinc-100">{p.name} ↗</a>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3.5 text-[15px]">
+              <span className="font-mono text-xs font-bold tracking-[0.14em] text-zinc-500 uppercase">{t(UI.footContact)}</span>
+              {PROFILE.email && <a href={`mailto:${PROFILE.email}`} className="foot-link break-all text-zinc-300 hover:text-zinc-100">{PROFILE.email}</a>}
+              <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" className="foot-link text-zinc-300 hover:text-zinc-100">GitHub ↗</a>
+              <a href={PROFILE.instagram} target="_blank" rel="noopener noreferrer" className="foot-link text-zinc-300 hover:text-zinc-100">Instagram ↗</a>
+              {PROFILE.resume && <a href={PROFILE.resume} className="foot-link text-zinc-300 hover:text-zinc-100" download>{t(UI.nav.resume)} (PDF) ↓</a>}
+            </div>
+          </div>
+
+          <div aria-hidden="true" className="footer-word mt-16 text-center text-[19vw] leading-[0.8] font-extrabold tracking-[-0.06em] whitespace-nowrap select-none lg:text-[240px]">
+            {t(UI.footerWord)}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 font-mono text-[13px] text-zinc-400">
+            <span>© 2026 {t(PROFILE.name)} · {t(UI.footerMade)}</span>
+            <a href="#top" className="flex items-center gap-2 rounded-xl border border-line2 px-4 py-2.5 font-sans text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500">
+              {t(UI.backTop)} <span aria-hidden="true">↑</span>
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
