@@ -213,7 +213,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <div className="flex flex-col gap-8 lg:col-span-5">
             <h2 className="text-5xl leading-none font-bold tracking-[-0.04em] md:text-7xl">{t(UI.aboutTitle)}</h2>
             <div className="relative w-[220px] overflow-hidden rounded-3xl border border-line2 md:w-[260px]">
-              <Image src={PROFILE.photo} alt={t(PROFILE.name)} width={471} height={569} sizes="260px" className="h-auto w-full grayscale-[25%]" />
+              <Image src={PROFILE.photo} alt={t(PROFILE.name)} width={600} height={800} sizes="260px" className="h-auto w-full" />
               <span className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-ink/80 px-3 py-1.5 font-mono text-xs text-zinc-200 backdrop-blur">
                 <span className="pulse h-1.5 w-1.5 rounded-full bg-green-400" />Junior Python / Fullstack
               </span>
