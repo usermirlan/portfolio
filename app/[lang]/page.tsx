@@ -4,6 +4,7 @@ import { ARCHIVE, LANGS, MARQUEE, MORE, PROFILE, PROJECTS, STACK, UI, isLang, ty
 import { Btn, Chip, GithubIcon } from "@/components/ui";
 import ThemeToggle from "@/components/ThemeToggle";
 import Globe from "@/components/Globe";
+import Weather from "@/components/Weather";
 import Effects from "@/components/Effects";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
@@ -65,6 +66,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <span className="a1" /><span className="a2" /><span className="a3" />
           </div>
           <div aria-hidden="true" className="grid-lines pointer-events-none absolute inset-0" />
+          <Weather />
           <Globe />
           <div aria-hidden="true" className="hero-fade pointer-events-none absolute inset-x-0 bottom-0 h-40" />
           <div className="relative mx-auto flex max-w-[1280px] flex-col gap-8 px-5 pt-16 md:gap-9 md:px-8 md:pt-24">

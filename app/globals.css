@@ -292,3 +292,9 @@ html[data-theme="light"] .spotlight { display: none; background: radial-gradient
   html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
   .tilt { transform: none; }
 }
+
+/* weather layer: fade out at the bottom so it melts into the page */
+.weather {
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+}
