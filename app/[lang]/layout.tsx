@@ -44,7 +44,10 @@ export default async function LangLayout({ children, params }: { children: React
           }}
         />
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <div aria-hidden="true" className="grain" />
+        {children}
+      </body>
     </html>
   );
 }

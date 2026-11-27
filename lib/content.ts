@@ -90,6 +90,17 @@ export const UI = {
   contactTitleB: { ky: "курайлы.", ru: "что-нибудь вместе.", en: "something together." },
   themeLight: { ky: "Жарык темага өтүү", ru: "Светлая тема", en: "Switch to light theme" },
   themeDark: { ky: "Караңгы темага өтүү", ru: "Тёмная тема", en: "Switch to dark theme" },
+  hire: { ky: "Байланышуу", ru: "Связаться", en: "Get in touch" },
+  footerBlurb: {
+    ky: "Fullstack developer. Python, Django, FastAPI жана Next.js менен идеяны иштеген продуктуга айландырам.",
+    ru: "Fullstack-разработчик. Превращаю идеи в работающие продукты на Python, Django, FastAPI и Next.js.",
+    en: "Fullstack developer turning ideas into working products with Python, Django, FastAPI and Next.js.",
+  },
+  footNav: { ky: "Навигация", ru: "Навигация", en: "Navigate" },
+  footProjects: { ky: "Долбоорлор", ru: "Проекты", en: "Projects" },
+  footContact: { ky: "Байланыш", ru: "Контакты", en: "Contact" },
+  footerWord: { ky: "МИРЛАН", ru: "МИРЛАН", en: "MIRLAN" },
+  backTop: { ky: "Жогору", ru: "Наверх", en: "Back to top" },
   footerMade: { ky: "Next.js менен жасалды · Vercel", ru: "Сделано на Next.js · Vercel", en: "Built with Next.js · Vercel" },
 } satisfies Record<string, unknown>;
 
