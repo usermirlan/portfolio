@@ -103,7 +103,6 @@ article::before {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   width: 60%; height: 80%; top: 10%;
   background: radial-gradient(closest-side, color-mix(in oklab, var(--a) 22%, transparent), transparent);
-  filter: blur(40px);
 }
 article:nth-of-type(odd)::before { right: 0; }
 article:nth-of-type(even)::before { left: 0; }
@@ -156,18 +155,18 @@ html[data-theme="light"] .contact-card {
 
 /* film grain over the whole page */
 .grain {
-  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.045; mix-blend-mode: overlay;
+  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.025; contain: strict;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-html[data-theme="light"] .grain { opacity: 0.06; mix-blend-mode: multiply; }
+html[data-theme="light"] .grain { opacity: 0.035; }
 
 /* floating glass navigation */
 .nav-glass {
   background: rgba(17, 17, 21, 0.62);
   border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 html[data-theme="light"] .nav-glass {
   background: rgba(255, 255, 255, 0.72);
@@ -189,18 +188,20 @@ html[data-theme="light"] .nav-link:hover { background: rgba(24, 24, 27, 0.05); }
 }
 html[data-theme="light"] .text-grad { background-image: linear-gradient(92deg, #ea580c 0%, #db2777 45%, #7c3aed 100%); }
 
-/* drifting aurora blobs */
-.aurora { overflow: hidden; }
-.aurora span { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: 0.55; will-change: transform; }
-.aurora .a1 { width: 620px; height: 620px; right: -120px; top: -180px; background: #ff7a4d; opacity: 0.22; animation: drift1 22s ease-in-out infinite alternate; }
-.aurora .a2 { width: 680px; height: 680px; left: -220px; top: 160px; background: #8b5cf6; opacity: 0.2; animation: drift2 26s ease-in-out infinite alternate; }
-.aurora .a3 { width: 520px; height: 520px; left: 40%; bottom: -260px; background: #22d3ee; opacity: 0.14; animation: drift3 30s ease-in-out infinite alternate; }
-html[data-theme="light"] .aurora .a1 { opacity: 0.32; }
-html[data-theme="light"] .aurora .a2 { opacity: 0.24; }
-html[data-theme="light"] .aurora .a3 { opacity: 0.22; }
-@keyframes drift1 { to { transform: translate(-120px, 80px) scale(1.12); } }
-@keyframes drift2 { to { transform: translate(140px, -60px) scale(0.92); } }
-@keyframes drift3 { to { transform: translate(-160px, -40px) scale(1.15); } }
+/* aurora: static radial gradients (no blur filter, no animation = cheap to paint) */
+.aurora {
+  background:
+    radial-gradient(560px 460px at 92% 4%, rgba(255, 122, 77, 0.20), transparent 70%),
+    radial-gradient(620px 520px at 2% 62%, rgba(139, 92, 246, 0.18), transparent 70%),
+    radial-gradient(520px 360px at 55% 104%, rgba(34, 211, 238, 0.12), transparent 70%);
+}
+html[data-theme="light"] .aurora {
+  background:
+    radial-gradient(560px 460px at 92% 4%, rgba(255, 122, 77, 0.28), transparent 70%),
+    radial-gradient(620px 520px at 2% 62%, rgba(139, 92, 246, 0.20), transparent 70%),
+    radial-gradient(520px 360px at 55% 104%, rgba(34, 211, 238, 0.18), transparent 70%);
+}
+.aurora span { display: none; }
 .hero-fade { background: linear-gradient(to bottom, transparent, var(--color-ink)); opacity: 0.6; }
 
 /* section headings get a thin gradient underline accent */
@@ -283,8 +284,8 @@ article.stack-card::before { display: none; }
 .tilt.tilting .tilt-light { opacity: 1; }
 
 /* cursor spotlight over the whole page */
-.spotlight { background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 70%); }
-html[data-theme="light"] .spotlight { background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(139, 92, 246, 0.06), transparent 70%); }
+.spotlight { display: none; background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 70%); }
+html[data-theme="light"] .spotlight { display: none; background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(139, 92, 246, 0.06), transparent 70%); }
 
 @media (prefers-reduced-motion: reduce) {
   h1 .line > span { animation: none; }

@@ -74,21 +74,10 @@ export default function Effects() {
         cleanups.push(() => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); });
       });
 
-      // spotlight
-      const spot = document.querySelector<HTMLElement>(".spotlight");
-      if (spot) {
-        const mv = (e: PointerEvent) => {
-          spot.style.setProperty("--sx", `${e.clientX}px`);
-          spot.style.setProperty("--sy", `${e.clientY}px`);
-          spot.style.opacity = "1";
-        };
-        window.addEventListener("pointermove", mv, { passive: true });
-        cleanups.push(() => window.removeEventListener("pointermove", mv));
-      }
     }
 
     return () => { io.disconnect(); cleanups.forEach((c) => c()); };
   }, []);
 
-  return <div aria-hidden="true" className="spotlight pointer-events-none fixed inset-0 z-[1] opacity-0 transition-opacity duration-500" />;
+  return null;
 }

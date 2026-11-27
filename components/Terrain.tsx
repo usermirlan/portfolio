@@ -23,11 +23,11 @@ export default function Terrain() {
     let t = 0;
     let mx = 0, tmx = 0; // smoothed mouse x (-1..1)
 
-    const COLS = 110;
-    const ROWS = 30;
+    const COLS = 80;
+    const ROWS = 24;
 
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = 1; // lines look fine at 1x and it is ~4x cheaper on retina
       const r = canvas!.getBoundingClientRect();
       w = r.width; h = r.height;
       canvas!.width = Math.round(w * dpr);
@@ -71,7 +71,7 @@ export default function Terrain() {
         ctx!.lineWidth = 1.1 * (1 - depth * 0.6);
         ctx!.beginPath();
         for (let c = 0; c <= COLS; c++) {
-          const xw = (c - COLS / 2) * 0.6;
+          const xw = (c - COLS / 2) * 0.82;
           const hh = height(xw, z + t * 0.6) * 1.7;
           const sx = w / 2 + ((xw - mx * 6) / z) * f * 0.5;
           const sy = horizon + ((camH - hh) / z) * f * 0.5;
@@ -81,12 +81,14 @@ export default function Terrain() {
       }
     }
 
-    function loop() {
-      if (visible && !document.hidden) {
-        t += 0.012;
-        frame();
-      }
+    let last = 0;
+    function loop(now: number) {
       raf = requestAnimationFrame(loop);
+      if (!visible || document.hidden) return;
+      if (now - last < 33) return; // ~30 fps is plenty for a slow background
+      last = now;
+      t += 0.022;
+      frame();
     }
 
     const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
