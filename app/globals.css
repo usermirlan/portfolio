@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Tight Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --color-ink: #09090b;
+  --color-panel: #111114;
+  --color-line: #1d1d22;
+  --color-line2: #27272a;
+  --color-accent: #ff7a4d;
+}
+
+html { scroll-behavior: smooth; background: #09090b; }
+body { background: #09090b; color: #f4f4f5; -webkit-font-smoothing: antialiased; }
+::selection { background: #ff7a4d; color: #09090b; }
+
+.dotgrid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.pulse { animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* screenshot carousel: pure CSS crossfade */
+.cf { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #111114; }
+.cf > * { position: absolute; inset: 0; opacity: 0; animation: cf 12s infinite both; }
+.cf > *:nth-child(2) { animation-delay: 4s; }
+.cf > *:nth-child(3) { animation-delay: 8s; }
+@keyframes cf {
+  0% { opacity: 0; transform: scale(1.03); }
+  4% { opacity: 1; transform: scale(1); }
+  33% { opacity: 1; }
+  37% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.dots i { display: block; width: 18px; height: 3px; border-radius: 2px; background: #3f3f46; animation: dt 12s infinite both; }
+.dots i:nth-child(2) { animation-delay: 4s; }
+.dots i:nth-child(3) { animation-delay: 8s; }
+@keyframes dt { 0%, 36% { background: #f4f4f5; width: 32px; } 37%, 100% { background: #3f3f46; width: 18px; } }
+
+.mq { display: flex; width: max-content; animation: mq 40s linear infinite; }
+@keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* gentle reveal on load */
+.rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cf > *, .dots i, .mq, .pulse, .rise { animation: none !important; }
+  .cf > *:first-child { opacity: 1; }
+  html { scroll-behavior: auto; }
+}
