@@ -57,8 +57,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       <main>
         {/* HERO */}
-        <section className="dotgrid relative overflow-hidden border-b border-line">
-          <div className="mx-auto flex max-w-[1280px] flex-col gap-8 px-5 pt-16 md:gap-9 md:px-8 md:pt-24">
+        <section className="relative overflow-hidden border-b border-line">
+          <div aria-hidden="true" className="hero-glow pointer-events-none absolute inset-0" />
+          <div aria-hidden="true" className="grid-lines pointer-events-none absolute inset-0" />
+          <div className="relative mx-auto flex max-w-[1280px] flex-col gap-8 px-5 pt-16 md:gap-9 md:px-8 md:pt-24">
             <span className="rise flex items-center gap-2.5 self-start rounded-full border border-line2 bg-panel px-3.5 py-2 font-mono text-[13px] text-zinc-300">
               <span className="pulse h-2 w-2 rounded-full bg-green-400" />
               {t(UI.status)}
@@ -95,7 +97,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </section>
 
         {/* FACTS */}
-        <section className="border-b border-line">
+        <section className="facts border-b border-line">
           <div className="mx-auto grid max-w-[1280px] grid-cols-2 px-5 md:px-8 lg:grid-cols-4">
             {UI.facts.map((f, i) => (
               <div key={i} className={`py-8 pr-4 md:py-9 ${i % 2 === 1 ? "border-l border-line pl-5" : ""} ${i >= 2 ? "border-t border-line lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-6" : ""} ${i > 0 ? "lg:pl-6" : ""}`}>
@@ -127,7 +129,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
           <div className="flex flex-col gap-24 md:gap-32">
             {PROJECTS.map((p, idx) => (
-              <article key={p.id} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              <article key={p.id} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14" style={{ "--a": p.accent } as React.CSSProperties}>
                 <div className={`flex flex-col gap-5 lg:col-span-5 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
                   <div className="flex items-center gap-3.5 font-mono text-[13px] text-zinc-400">
                     <span className="font-bold acc" style={{ "--a": p.accent } as React.CSSProperties}>{p.n}</span>
@@ -136,7 +138,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   </div>
                   <h3 className="text-[44px] leading-none font-bold tracking-[-0.035em] md:text-[52px]">{p.name}</h3>
                   <p className="text-lg leading-normal text-zinc-300 md:text-xl">{t(p.tagline)}</p>
-                  <div className="flex flex-col gap-1.5 rounded-2xl border border-line bg-panel px-5 py-4">
+                  <div className="tint flex flex-col gap-1.5 rounded-2xl border border-line bg-panel px-5 py-4">
                     <span className="font-mono text-xs font-bold acc" style={{ "--a": p.accent } as React.CSSProperties}>{t(UI.hard)}</span>
                     <span className="text-base leading-relaxed text-zinc-400">{t(p.hard)}</span>
                   </div>
@@ -149,7 +151,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   </div>
                 </div>
 
-                <div className={`overflow-hidden rounded-[18px] border border-line2 bg-panel shadow-soft shadow-[0_40px_100px_rgba(0,0,0,0.55)] lg:col-span-7 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
+                <div className={`frame relative overflow-hidden rounded-[18px] border border-line2 bg-panel shadow-soft shadow-[0_40px_100px_rgba(0,0,0,0.55)] lg:col-span-7 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
                   <div className="flex items-center gap-2 border-b border-line px-4 py-3">
                     <span className="h-[11px] w-[11px] rounded-full bg-zinc-700" />
                     <span className="h-[11px] w-[11px] rounded-full bg-zinc-700" />
@@ -177,7 +179,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <div className="grid gap-4 md:grid-cols-2">
             {MORE.map((m) => (
               <a key={m.n} href={m.repo ?? m.live} target="_blank" rel="noopener noreferrer"
-                className="group flex flex-col gap-3.5 rounded-[20px] border border-line2 p-7 transition-colors hover:border-zinc-500 hover:bg-panel md:p-8">
+                style={{ "--a": m.color } as React.CSSProperties}
+                className="more-card group flex flex-col gap-3.5 rounded-[20px] border border-line2 p-7 transition-colors hover:border-zinc-500 hover:bg-panel md:p-8">
                 <span className="font-mono text-xs font-bold acc" style={{ "--a": m.color } as React.CSSProperties}>{m.n} · {t(m.label)}</span>
                 <span className="flex items-start justify-between gap-4 text-[28px] font-bold tracking-[-0.02em]">
                   {t(m.name)}
@@ -200,7 +203,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <h2 className="mb-12 text-5xl leading-none font-bold tracking-[-0.04em] md:text-7xl">{t(UI.stackTitle)}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STACK.map((g) => (
-              <div key={g.title} className="flex flex-col gap-4 rounded-[18px] border border-line2 p-7">
+              <div key={g.title} className="tint-soft flex flex-col gap-4 rounded-[18px] border border-line2 p-7" style={{ "--a": g.color } as React.CSSProperties}>
                 <span className="font-mono text-[13px] font-bold acc" style={{ "--a": g.color } as React.CSSProperties}>{g.title}</span>
                 <ul className="flex flex-col gap-1 text-lg leading-relaxed text-zinc-300 md:text-[19px]">
                   {g.items.map((it) => <li key={it}>{it}</li>)}
@@ -244,7 +247,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
         {/* CONTACT */}
         <section id="contact" className="mx-auto max-w-[1280px] scroll-mt-20 px-5 pt-28 md:px-8 md:pt-36">
-          <div className="dotgrid flex flex-col gap-9 rounded-[28px] border border-line2 px-6 py-14 md:px-16 md:py-20">
+          <div className="contact-card dotgrid relative flex flex-col gap-9 overflow-hidden rounded-[28px] border border-line2 px-6 py-14 md:px-16 md:py-20">
             <span className="font-mono text-sm text-accent">{t(UI.contactKicker)}</span>
             <h2 className="text-5xl leading-[0.92] font-extrabold tracking-[-0.05em] md:text-[104px]">
               {t(UI.contactTitleA)}
