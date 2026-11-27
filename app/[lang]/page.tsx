@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ARCHIVE, LANGS, MARQUEE, MORE, PROFILE, PROJECTS, STACK, UI, isLang, type Lang } from "@/lib/content";
 import { Btn, Chip, GithubIcon } from "@/components/ui";
 import ThemeToggle from "@/components/ThemeToggle";
-import Terrain from "@/components/Terrain";
+import Globe from "@/components/Globe";
 import Effects from "@/components/Effects";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
@@ -65,7 +65,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <span className="a1" /><span className="a2" /><span className="a3" />
           </div>
           <div aria-hidden="true" className="grid-lines pointer-events-none absolute inset-0" />
-          <Terrain />
+          <Globe />
           <div aria-hidden="true" className="hero-fade pointer-events-none absolute inset-x-0 bottom-0 h-40" />
           <div className="relative mx-auto flex max-w-[1280px] flex-col gap-8 px-5 pt-16 md:gap-9 md:px-8 md:pt-24">
             <span className="rise flex items-center gap-2.5 self-start rounded-full border border-line2 bg-panel px-3.5 py-2 font-mono text-[13px] text-zinc-300">
