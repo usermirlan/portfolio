@@ -98,7 +98,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <div aria-hidden="true" className="fan rise relative mt-6 h-[200px] sm:h-[300px] lg:h-[380px]" style={{ animationDelay: "560ms" }}>
               <Image src="/images/ezapis-dark.jpg" alt="" width={1440} height={900} priority sizes="46vw"
                 className="absolute top-[60px] left-[2%] w-[46%] -rotate-4 rounded-t-2xl border border-zinc-700 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
-              <Image src="/images/toi-hero.jpg" alt="" width={1440} height={900} priority sizes="46vw"
+              <Image src="/images/jobpilot-dash.jpg" alt="" width={1440} height={900} priority sizes="46vw"
                 className="absolute top-[60px] right-[2%] w-[46%] rotate-4 rounded-t-2xl border border-zinc-700 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.6)]" />
               <Image src="/images/tooarna-home.jpg" alt="" width={800} height={505} priority sizes="50vw"
                 className="absolute top-0 left-1/4 w-1/2 rounded-t-2xl border border-zinc-600 shadow-soft shadow-[0_30px_80px_rgba(0,0,0,0.7)]" />

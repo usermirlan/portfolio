@@ -13,7 +13,7 @@ export const PROFILE = {
   github: "https://github.com/usermirlan",
   githubUser: "usermirlan",
   instagram: "https://www.instagram.com/mir1an.00/",
-  instagramUser: "@mir1an.00",
+  instagramUser: "@mir1vn",
   // TODO: резюмеден толтуруу. Бош калса, баскыч көрсөтүлбөйт.
   email: "mirlanakunaliev@gmail.com",
   telegram: "", // мисалы: "https://t.me/username"
@@ -52,9 +52,9 @@ export const UI = {
   },
   seeWork: { ky: "Долбоорлорду көрүү", ru: "Смотреть проекты", en: "See my work" },
   facts: [
-    { v: "10", t: { ky: "долбоор, баары нөлдөн баштап", ru: "проектов, все с нуля", en: "projects, all built from scratch" } },
-    { v: "5", t: { ky: "жандуу демо интернетте", ru: "живых демо в интернете", en: "live demos online" } },
-    { v: "109", t: { ky: "автотест үч долбоордо", ru: "автотестов в трёх проектах", en: "automated tests across three projects" } },
+    { v: "11", t: { ky: "долбоор, баары нөлдөн баштап", ru: "проектов, все с нуля", en: "projects, all built from scratch" } },
+    { v: "6", t: { ky: "жандуу демо интернетте", ru: "живых демо в интернете", en: "live demos online" } },
+    { v: "131", t: { ky: "автотест төрт долбоордо", ru: "автотест в четырёх проектах", en: "automated tests across four projects" } },
     { v: "KY·RU·EN", t: { ky: "интерфейстер 2–3 тилде", ru: "интерфейсы на 2–3 языках", en: "interfaces in 2–3 languages" } },
   ],
   workTitle: { ky: "Тандалган иштер", ru: "Избранные работы", en: "Selected work" },
@@ -121,8 +121,34 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "too-arna",
+    id: "jobpilot",
     n: "01",
+    name: "JobPilot",
+    accent: "#ffb547",
+    kind: { ky: "Fullstack · AI · Telegram", ru: "Fullstack · AI · Telegram", en: "Fullstack · AI · Telegram" },
+    tagline: {
+      ky: "Жумуш издөө жардамчысы: арыздар канбан тактада, AI вакансияны резюмеге салыштырат, cover letter жазат жана маекке даярдайт. Telegram эскертет.",
+      ru: "Помощник в поиске работы: отклики на канбан-доске, AI сравнивает вакансию с резюме, пишет сопроводительные письма и готовит к интервью. Напоминания в Telegram.",
+      en: "A job search copilot: applications on a kanban board, AI matches each vacancy against your resume, writes cover letters and preps you for interviews. Telegram reminders.",
+    },
+    hard: {
+      ky: "AI эки режимде иштейт: ачкыч жок болсо же LLM ката берсе, детерминисттик офлайн талдоочу ордун басат. Telegram бот long polling менен ар бир кадамга бир гана жолу эскертет. JWT httpOnly cookie'де, Next.js прокси аркылуу. Чыныгы Postgres жана жасалма Telegram сервери менен 22 e2e тест. Интерфейс жана AI мазмуну 3 тилде.",
+      ru: "AI работает в двух режимах: без ключа или при ошибке LLM подключается детерминированный офлайн-анализатор. Telegram-бот на long polling напоминает о каждом шаге ровно один раз. JWT в httpOnly-cookie через Next.js-прокси. 22 e2e-теста с реальным Postgres и фейковым сервером Telegram. Интерфейс и AI-контент на 3 языках.",
+      en: "AI runs in two modes: with no key, or when the LLM fails, a deterministic offline analyzer takes over. A long-polling Telegram bot reminds you about each step exactly once. JWT lives in an httpOnly cookie behind a Next.js proxy. 22 e2e tests against real Postgres and a fake Telegram server. UI and AI output in 3 languages.",
+    },
+    stack: ["NestJS 11", "Drizzle ORM", "PostgreSQL", "Next.js 16", "LLM (Groq)", "Telegram Bot API"],
+    live: "https://jobpilot-gamma-seven.vercel.app",
+    repo: "https://github.com/usermirlan/jobpilot",
+    domain: "jobpilot-gamma-seven.vercel.app",
+    images: [
+      { src: "/images/jobpilot-dash.jpg", alt: { ky: "JobPilot: башкы такта", ru: "JobPilot: главная доска", en: "JobPilot: dashboard" } },
+      { src: "/images/jobpilot-detail.jpg", alt: { ky: "JobPilot: AI талдоо жана cover letter", ru: "JobPilot: AI-анализ и сопроводительное письмо", en: "JobPilot: AI analysis and cover letter" } },
+      { src: "/images/jobpilot-interview.jpg", alt: { ky: "JobPilot: маекке даярдануу", ru: "JobPilot: подготовка к интервью", en: "JobPilot: interview prep" } },
+    ],
+  },
+  {
+    id: "too-arna",
+    n: "02",
     name: "Too Arna",
     accent: "#4ade80",
     kind: { ky: "Fullstack · Гео · AI", ru: "Fullstack · Гео · AI", en: "Fullstack · Geo · AI" },
@@ -148,7 +174,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "flowforge",
-    n: "02",
+    n: "03",
     name: "FlowForge",
     accent: "#a78bfa",
     kind: { ky: "Автоматташтыруу · Real-time", ru: "Автоматизация · Real-time", en: "Automation · Real-time" },
@@ -174,7 +200,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "documind",
-    n: "03",
+    n: "04",
     name: "DocuMind",
     accent: "#ff7a4d",
     kind: { ky: "AI · RAG · Презентациялар", ru: "AI · RAG · Презентации", en: "AI · RAG · Presentations" },
@@ -200,7 +226,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "e-zapis",
-    n: "04",
+    n: "05",
     name: "e-zapis",
     accent: "#60a5fa",
     kind: { ky: "Диплом · Медицина · Real-time", ru: "Диплом · Медицина · Real-time", en: "Thesis · Healthcare · Real-time" },
