@@ -12,7 +12,7 @@ export const PROFILE = {
   name: { ky: "Мирлан Акунали уулу", ru: "Мирлан Акунали уулу", en: "Mirlan Akunali uulu" } as L,
   github: "https://github.com/usermirlan",
   githubUser: "usermirlan",
-  instagram: "https://www.instagram.com/mir1an.00/",
+  instagram: "https://www.instagram.com/mir1vn/",
   instagramUser: "@mir1vn",
   // TODO: резюмеден толтуруу. Бош калса, баскыч көрсөтүлбөйт.
   email: "mirlanakunaliev@gmail.com",
