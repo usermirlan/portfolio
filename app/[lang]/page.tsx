@@ -79,7 +79,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <span className="line">
                 <span className="text-grad" style={{ animationDelay: "180ms" }}>{t(UI.heroB)}</span>
                 {t(UI.heroC).trim() && " "}
-                <span style={{ animationDelay: "300ms" }}>{t(UI.heroC).trim()}<span className="text-accent">.</span></span>
+                <span style={{ animationDelay: "300ms" }}>{t(UI.heroC).trim()}</span>
               </span>
             </h1>
             <div className="rise flex flex-wrap items-end justify-between gap-8" style={{ animationDelay: "420ms" }}>
